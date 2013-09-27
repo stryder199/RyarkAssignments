@@ -28,11 +28,18 @@ class TestCryptoFunctions(unittest.TestCase):
         pass
     
     def test_vernam_encrypt(self):
-        pass
-    
+        self.assertEqual(vernam_encrypt('VERNAMCIPHER', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 'VERNAMCIPHER')
+        self.assertEqual(vernam_encrypt('VERNAMCIPHER', [76, 48, 16, 82, 44, 03, 58, 11, 60, 05, 48, 88]), 'TAHRSPITXMAB')
+        self.assertEqual(vernam_encrypt('VERNAMCIPHER', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 'VERNAMCIPHER')
+        self.assertEqual(vernam_encrypt('VERNAMCIPHER', [76, 48, 16, 82, 44, 03, 58, 11, 60, 05, 48]), 'TAHRSPITXMAP')
+        
+        
     def test_vernam_decrypt(self):
-        pass
-    
+        self.assertEqual(vernam_decrypt('VERNAMCIPHER', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 'VERNAMCIPHER')
+        self.assertEqual(vernam_decrypt('TAHRSPITXMAB', [76, 48, 16, 82, 44, 03, 58, 11, 60, 05, 48, 88]), 'VERNAMCIPHER')
+        self.assertEqual(vernam_decrypt('VERNAMCIPHER', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 'VERNAMCIPHER')
+        self.assertEqual(vernam_decrypt('TAHRSPITXMAP', [76, 48, 16, 82, 44, 03, 58, 11, 60, 05, 48]), 'VERNAMCIPHER')
+        
     def test_book_encrypt(self):
         pass
     
