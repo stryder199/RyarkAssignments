@@ -285,5 +285,12 @@ preconditions
 	S is a string of A..Z
 '''
 def count_digrams(S):
-	#TODO
-	pass # put your implementation here and REMOVE THIS LINE
+	counts = {}
+	for s_index in range(len(S)-1):
+		digram = S[s_index] + S[s_index+1]
+		if not counts.has_key(digram):
+			counts[digram] = 1
+		else:
+			counts[digram] += 1
+	print counts
+	return counts
