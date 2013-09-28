@@ -15,6 +15,7 @@ def caeser_encrypt(P,K):
 		index_c = alpha.index(p) + K
 		index_c = index_c % 26
 		cipherString += alpha[index_c]
+	print cipherString
 	return cipherString
 
 '''
@@ -31,6 +32,7 @@ def caeser_decrypt(C,K):
 		index_p = alpha.index(c) - K
 		index_p = index_p % 26
 		plainString += alpha[index_p]
+	print plainString
 	return plainString
 
 # --------------------------------------------------------------
@@ -48,6 +50,7 @@ def substitution_encrypt(P,K):
 	for p in P:
 		index_c = alpha.index(p)
 		cipherString += K[index_c]
+	print cipherString
 	return cipherString
 
 
@@ -64,6 +67,7 @@ def substitution_decrypt(C,K):
 	for c in C:
 		index_p = K.index(c)
 		plainString += alpha[index_p]
+	print plainString
 	return plainString
 
 
@@ -79,16 +83,18 @@ preconditions
 '''
 def vernam_encrypt(P,K):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-	index = 0
+	key_index = 0
 	cipherString = ""
 	
-	#TODO There might be a bug here. Why are we looping through K and not P again???	
-	for key in K:
-		c_index = alpha.index(P[index]) + key
+	for p in P:
+		c_index = alpha.index(p) + K[key_index]
 		c_index = c_index % 26
-		index += 1
 		cipherString += alpha[c_index]
-		
+		if key_index+1 == len(K):
+			key_index = 0
+		else:
+			key_index += 1
+	print cipherString
 	return cipherString
 
 
@@ -102,16 +108,18 @@ preconditions
 '''
 def vernam_decrypt(C,N):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-	index = 0
+	key_index = 0
 	plainString = ""
 	
-	#TODO There might be a bug here. Why are we looping through K and not C again???
-	for key in N:
-		p_index = alpha.index(C[index]) - key
+	for c in C:
+		p_index = alpha.index(c) - N[key_index]
 		p_index = p_index % 26
-		index += 1
 		plainString += alpha[p_index]
-		
+		if key_index+1 == len(N):
+			key_index = 0
+		else:
+			key_index += 1
+	print plainString
 	return plainString
 
 
@@ -135,7 +143,7 @@ def book_encrypt(P,K):
 		c_index = c_index % 26
 		index += 1
 		cipherString += alpha[c_index]
-		
+	print cipherString
 	return cipherString
 
 
@@ -157,7 +165,7 @@ def book_decrypt(C,N):
 		p_index = p_index % 26
 		index += 1
 		plainString += alpha[p_index]
-		
+	print plainString
 	return plainString
 
 
@@ -171,9 +179,20 @@ preconditions
 	K > 1
 '''
 def columnar_encrypt(P,K):
-	#TODO
-	pass # put your implementation here and REMOVE THIS LINE
-
+	cipherString = ""
+	
+	if K >= len(P) or K == 1:
+		return P
+	
+	for i in range(K):
+		for j in range(len(P)/K):
+			cipherString += P[i + j*K]
+			
+			if j == len(P)/K-1 and i < len(P)%K:
+				cipherString += P[i + (j+1)*K]
+	print cipherString
+	return cipherString			
+	
 '''
 purpose
 	decrypt C using columnar transposition cipher with key K
@@ -183,12 +202,22 @@ preconditions
 '''
 def columnar_decrypt(C,K):
 	plainString = ""
-	for i in range(K):
-		for j in range(len(C)/K):
-			plainString += C[i + K*j]
-			if j == (len(C)/K)-1 and i < len(C)%K:
-				plainString += C[i + K*(j+1)]
-				
+
+	jumps = len(C)/K
+	if len(C)%K > 0:
+		jumps += 1
+		
+	for i in range(jumps):
+		jump_index = i
+		number_of_jumps = K
+		if i == jumps-1 and len(C)%K > 0:
+			number_of_jumps = len(C)%K
+		for j in range(number_of_jumps):
+			plainString += C[jump_index]
+			jump_index += len(C)/K
+			if j < len(C)%K:
+				jump_index += 1
+	print plainString
 	return plainString
 
 # --------------------------------------------------------------
@@ -206,6 +235,7 @@ def rsa_encrypt(P,e,n):
 		c = (p**e)%n
 		cipherList.append(c)
 		
+	print cipherList
 	return cipherList
 
 '''
@@ -220,7 +250,8 @@ def rsa_decrypt(C,d,N):
 	for c in C:
 		p = (c**d)%N
 		plainList.append(p)
-		
+	
+	print plainList	
 	return plainList
 
 # --------------------------------------------------------------
@@ -239,6 +270,7 @@ def count_letters(S):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	for letter in S:
 		counts[alpha.index(letter)] += 1
+	print counts
 	return counts
 
 
