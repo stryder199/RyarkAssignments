@@ -120,29 +120,44 @@ class TestCryptoFunctions(unittest.TestCase):
         self.assertEqual(columnar_decrypt('ILOVETOENCRYPTTHINGS', 21), 'ILOVETOENCRYPTTHINGS', "Columnar Decrypt #6")
         print "Finished Columnar Decrypt\n"
     
-#     def test_rsa_encrypt(self):
-#         print "Starting RSA Encrypt"
-#         self.assertEqual(rsa_encrypt([2, 3, 20, 11, 13, 15, 16, 19, 10, 14], 17, 470929), [131072, 105617, 266988L, 227340L, 393425L, 37661L, 157007L, 1140L, 347522L, 146068L], "RSA Encrypt #1")
-#         self.assertEqual(rsa_encrypt([13, 8, 4, 10, 11, 22, 25, 2, 15, 9], 17, 470929), [393425L, 96697L, 379264L, 347522L, 227340L, 346934L, 336312L, 131072, 37661L, 55466L], "RSA Encrypt #2")
-#         self.assertEqual(rsa_encrypt([3, 24, 2, 23, 9, 12, 10, 0, 13, 19], 17, 470929), [105617, 280755L, 131072, 429540L, 55466L, 447006L, 347522L, 0, 393425L, 1140L], "RSA Encrypt #3")
-#         self.assertEqual(rsa_encrypt([8, 25, 23, 0, 13, 4, 11, 19, 18, 20], 17, 470929), [96697L, 336312L, 429540L, 0, 393425L, 379264L, 227340L, 1140L, 308579L, 266988L], "RSA Encrypt #4")
-#         self.assertEqual(rsa_encrypt([0, 4, 8, 14, 23, 19, 5, 2, 16, 7], 17, 470929), [0, 379264L, 96697L, 146068L, 429540L, 1140L, 95308L, 131072, 157007L, 191934L], "RSA Encrypt #5")
-#         print "Finished RSA Encrypt\n"
-#     
-#     def test_rsa_decrypt(self):
-#         print "Starting RSA Decrypt"
-#         self.assertEqual(rsa_decrypt([131072, 105617, 266988L, 227340L, 393425L, 37661L, 157007L, 1140L, 347522L, 146068L], 110465, 470929), [2, 3, 20, 11, 13, 15, 16, 19, 10, 14], "RSA Decrypt #1")
-#         self.assertEqual(rsa_decrypt([393425L, 96697L, 379264L, 347522L, 227340L, 346934L, 336312L, 131072, 37661L, 55466L], 110465, 470929), [13, 8, 4, 10, 11, 22, 25, 2, 15, 9], "RSA Decrypt #2")
-#         self.assertEqual(rsa_decrypt([105617, 280755L, 131072, 429540L, 55466L, 447006L, 347522L, 0, 393425L, 1140L], 110465, 470929), [3, 24, 2, 23, 9, 12, 10, 0, 13, 19], "RSA Decrypt #3")
-#         self.assertEqual(rsa_decrypt([96697L, 336312L, 429540L, 0, 393425L, 379264L, 227340L, 1140L, 308579L, 266988L], 110465, 470929), [8, 25, 23, 0, 13, 4, 11, 19, 18, 20], "RSA Decrypt #4")
-#         self.assertEqual(rsa_decrypt([0, 379264L, 96697L, 146068L, 429540L, 1140L, 95308L, 131072, 157007L, 191934L], 110465, 470929), [0, 4, 8, 14, 23, 19, 5, 2, 16, 7], "RSA Decrypt #5")
-#         print "Finished RSA Decrypt\n"
+    def test_rsa_encrypt(self):
+        print "Starting RSA Encrypt"
+        self.assertEqual(rsa_encrypt([2, 3, 20, 11, 13, 15, 16, 19, 10, 14], 17, 470929), [131072, 105617, 266988L, 227340L, 393425L, 37661L, 157007L, 1140L, 347522L, 146068L], "RSA Encrypt #1")
+        self.assertEqual(rsa_encrypt([13, 8, 4, 10, 11, 22, 25, 2, 15, 9], 17, 470929), [393425L, 96697L, 379264L, 347522L, 227340L, 346934L, 336312L, 131072, 37661L, 55466L], "RSA Encrypt #2")
+        self.assertEqual(rsa_encrypt([3, 24, 2, 23, 9, 12, 10, 0, 13, 19], 17, 470929), [105617, 280755L, 131072, 429540L, 55466L, 447006L, 347522L, 0, 393425L, 1140L], "RSA Encrypt #3")
+        self.assertEqual(rsa_encrypt([8, 25, 23, 0, 13, 4, 11, 19, 18, 20], 17, 470929), [96697L, 336312L, 429540L, 0, 393425L, 379264L, 227340L, 1140L, 308579L, 266988L], "RSA Encrypt #4")
+        self.assertEqual(rsa_encrypt([0, 4, 8, 14, 23, 19, 5, 2, 16, 7], 17, 470929), [0, 379264L, 96697L, 146068L, 429540L, 1140L, 95308L, 131072, 157007L, 191934L], "RSA Encrypt #5")
+        print "Finished RSA Encrypt\n"
+     
+    def test_rsa_decrypt(self):
+        print "Starting RSA Decrypt"
+        self.assertEqual(rsa_decrypt([131072, 105617, 266988L, 227340L, 393425L, 37661L, 157007L, 1140L, 347522L, 146068L], 110465, 470929), [2, 3, 20, 11, 13, 15, 16, 19, 10, 14], "RSA Decrypt #1")
+        self.assertEqual(rsa_decrypt([393425L, 96697L, 379264L, 347522L, 227340L, 346934L, 336312L, 131072, 37661L, 55466L], 110465, 470929), [13, 8, 4, 10, 11, 22, 25, 2, 15, 9], "RSA Decrypt #2")
+        self.assertEqual(rsa_decrypt([105617, 280755L, 131072, 429540L, 55466L, 447006L, 347522L, 0, 393425L, 1140L], 110465, 470929), [3, 24, 2, 23, 9, 12, 10, 0, 13, 19], "RSA Decrypt #3")
+        self.assertEqual(rsa_decrypt([96697L, 336312L, 429540L, 0, 393425L, 379264L, 227340L, 1140L, 308579L, 266988L], 110465, 470929), [8, 25, 23, 0, 13, 4, 11, 19, 18, 20], "RSA Decrypt #4")
+        self.assertEqual(rsa_decrypt([0, 379264L, 96697L, 146068L, 429540L, 1140L, 95308L, 131072, 157007L, 191934L], 110465, 470929), [0, 4, 8, 14, 23, 19, 5, 2, 16, 7], "RSA Decrypt #5")
+        print "Finished RSA Decrypt\n"
     
     def test_count_letters(self):
-        pass
+        self.assertEqual(len(count_letters('')), 26)
+        self.assertEqual(count_letters(''), [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assertEqual(count_letters('A'), [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assertEqual(count_letters('AAA'), [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assertEqual(count_letters('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.assertEqual(count_letters('ABCDEFGHIJKLMNOPQRSTUVWXYZZZ'), [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3])
+        
     
     def test_count_digrams(self):
-        pass
+        self.assertEqual(len(count_digrams('')), 0)
+        self.assertEqual(len(count_digrams('ab')), 1)
+        
+        digrams = count_digrams('abc')
+        self.assertEqual(digrams['ab'], 1)
+        self.assertNotIn('ac', digrams)
+        
+        digrams = count_digrams('ababa')
+        self.assertEqual(digrams['ab'], 2)
+        self.assertEqual(digrams['ba'], 2)
     
 if __name__ == '__main__':
     unittest.main()
