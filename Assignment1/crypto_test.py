@@ -33,10 +33,10 @@ class TestCryptoFunctions(unittest.TestCase):
         print "Starting Substitution Decrypt"
         
         self.assertEqual(substitution_decrypt('ABC', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 'ABC')
-        self.assertEqual(substitution_encrypt('A', 'GBCDEFAHIJKLMNOPQRSTUVWXYZ'), 'G')
+        self.assertEqual(substitution_decrypt('A', 'GBCDEFAHIJKLMNOPQRSTUVWXYZ'), 'G')
         
         # I->R, A->B, M->P, W->C, E->Z, S->V, O->Q
-        self.assertEqual(substitution_encrypt('RBPBCZVQPZ', 'BAWDZFGHRJKLPNQMOIVTUSCXYE'), 'IAMAWESOME')
+        self.assertEqual(substitution_decrypt('RBPBCZVQPZ', 'BAWDZFGHRJKLPNQMOIVTUSCXYE'), 'IAMAWESOME')
         
         print "Finished Substitution Decrypt\n"
     
