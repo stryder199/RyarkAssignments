@@ -1,6 +1,3 @@
-#TODO Test Cases
-#TODO Clean up some algorithms
-
 '''
 purpose
 	encrypt P using Caesar cipher with key K
@@ -11,10 +8,12 @@ preconditions
 def caeser_encrypt(P,K):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	cipherString = ""
+	
 	for p in P:
 		index_c = alpha.index(p) + K
 		index_c = index_c % 26
 		cipherString += alpha[index_c]
+		
 	return cipherString
 
 '''
@@ -27,10 +26,12 @@ preconditions
 def caeser_decrypt(C,K):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	plainString = ""
+	
 	for c in C:
 		index_p = alpha.index(c) - K
 		index_p = index_p % 26
 		plainString += alpha[index_p]
+		
 	return plainString
 
 # --------------------------------------------------------------
@@ -45,9 +46,11 @@ preconditions
 def substitution_encrypt(P,K):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	cipherString = ""
+	
 	for p in P:
 		index_c = alpha.index(p)
 		cipherString += K[index_c]
+		
 	return cipherString
 
 
@@ -61,9 +64,11 @@ preconditions
 def substitution_decrypt(C,K):
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	plainString = ""
+	
 	for c in C:
 		index_p = K.index(c)
 		plainString += alpha[index_p]
+		
 	return plainString
 
 
@@ -90,6 +95,7 @@ def vernam_encrypt(P,K):
 			key_index = 0
 		else:
 			key_index += 1
+			
 	return cipherString
 
 
@@ -114,6 +120,7 @@ def vernam_decrypt(C,N):
 			key_index = 0
 		else:
 			key_index += 1
+			
 	return plainString
 
 
@@ -180,7 +187,6 @@ preconditions
 '''
 def columnar_encrypt(P,K):
 	cipherString = ""
-	
 	if K >= len(P) or K == 1:
 		return P
 	
@@ -190,8 +196,8 @@ def columnar_encrypt(P,K):
 			
 			if j == len(P)/K-1 and i < len(P)%K:
 				cipherString += P[i + (j+1)*K]
-	return cipherString			
-	
+				
+	return cipherString
 '''
 purpose
 	decrypt C using columnar transposition cipher with key K
@@ -216,6 +222,7 @@ def columnar_decrypt(C,K):
 			jump_index += len(C)/K
 			if j < len(C)%K:
 				jump_index += 1
+				
 	return plainString
 
 # --------------------------------------------------------------
@@ -229,6 +236,7 @@ preconditions
 '''
 def rsa_encrypt(P,e,n):
 	cipherList = []
+	
 	for p in P:
 		c = (p**e)%n
 		cipherList.append(c)
@@ -244,10 +252,11 @@ preconditions
 '''
 def rsa_decrypt(C,d,N):
 	plainList = []
+	
 	for c in C:
 		p = (c**d)%N
 		plainList.append(p)
-	
+		
 	return plainList
 
 # --------------------------------------------------------------
@@ -264,8 +273,10 @@ preconditions
 def count_letters(S):
 	counts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+	
 	for letter in S:
 		counts[alpha.index(letter)] += 1
+		
 	return counts
 
 
@@ -281,10 +292,12 @@ preconditions
 '''
 def count_digrams(S):
 	counts = {}
+	
 	for s_index in range(len(S)-1):
 		digram = S[s_index] + S[s_index+1]
 		if not counts.has_key(digram):
 			counts[digram] = 1
 		else:
 			counts[digram] += 1
+			
 	return counts
