@@ -171,8 +171,14 @@ preconditions
 	K > 1
 '''
 def columnar_encrypt(P,K):
-	#TODO
-	pass # put your implementation here and REMOVE THIS LINE
+	cipherString = ""
+	for i in range(K):
+		for j in range(len(P)/K):
+			cipherString += P[i + K*j]
+			if j == (len(P)/K)-1 and i < len(P)%K:
+				cipherString += P[i + K*(j+1)]
+	
+	return cipherString
 
 '''
 purpose
