@@ -68,12 +68,17 @@ class caesar:
 			for char in answer['answer']: #DR5
 				#If the char isn't a string or char
 				if not isinstance(char, str) and not isinstance(char, unicode) and not isinstance(char, basestring):
+					print "Not a String"
 					return False
-				if char == '' and char.lower() != self.ciphertext[self.hotspots[i]]: #DR6(inner) #DR7
+				if char == '' or char.lower() != self.ciphertext[self.hotspots[i]]: #DR6(inner) #DR7
+					print "Not equal"
+					print char + " " + self.ciphertext[self.hotspots[i]]
 					return False
 				i = i + 1
 		except:
+			print "Exeption"
 			return False
+		print "Equal"
 		return True
 
 style = '''
