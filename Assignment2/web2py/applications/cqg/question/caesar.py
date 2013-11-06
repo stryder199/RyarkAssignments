@@ -9,9 +9,10 @@ class caesar:
 		self.question_library_path = question_library_path
 		self.question_path = question_path
 
-		self.question_text = config.question_text
-		self.answers = config.answers
-		self.correct_answer = config.correct_answer
+		self.plaintext = config.plaintext
+		self.ciphertext = config.ciphertext
+		self.key = config.key
+		self.hotspots = config.hotspots
 	
 	def get_question_library_path(self):
 		return self.question_library_path
@@ -22,19 +23,23 @@ class caesar:
 	def get_css(self,answer):
 		return style
 
-	def get_html(self, plain, answer):
+	def get_html(self, answer):
 		html = "<div>"
 		html += "<p>" + self.question_text + "</p>"
 		topArray = ["Plain text"]
 		bottomArray = ["Cipher text"]
 		
 		#Load the Plain text into a list
-		for i in range(len(plain)):
-			topArray.append(plain[i])
+		for char in self.plaintext:
+			topArray.append(char)
+			
+		#Load the cipher text into the bottom array
+		for char in self.ciphertext:
+			bottomArray.append(char)
 		
-		#Get text boxes for answers
-		for i in range(len(answer)):
-			bottomArray[i] = html_util.get_text()
+		#Replace hotspot positions with text boxes
+		for pos in self.hotspots:
+			bottomArray[pos] = html_util.get_text()
 		
 		tableArray = [topArray, bottomArray]
 		

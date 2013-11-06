@@ -13,6 +13,7 @@ product_family = 'caesar'
 question_type = 'caesar'
 
 plaintext = $p
+ciphertext = $c
 key = $k
 hotspots = $h
 '''
@@ -30,7 +31,8 @@ except ImportError:
 for group in template.question_groups:
 	prefix = group[0]
 	question_id = 0
-	for (plaintext, key, hotspots) in group[1:]:
+	#We should generate the cipher using the alg not load it in... later...
+	for (plaintext, ciphertext, key, hotspots) in group[1:]:
 		path = os.path.join(sys.argv[2], prefix + str(question_id))
 
 		if not os.path.exists(path):
@@ -38,6 +40,7 @@ for group in template.question_groups:
 
 		config_string = template_string
 		config_string = config_string.replace('$p', "'" + plaintext + "'")
+		config_string = config_string.replace('$c', "'" + ciphertext + "'")
 		config_string = config_string.replace('$k', str(key))
 		config_string = config_string.replace('$h', str(hotspots))
 
