@@ -4,7 +4,6 @@ import html_util
 
 class caesar:
 	def __init__(self,question_library_path,question_path):
-		print "Starting Initing Caesar obj"
 		config = file_util.dynamic_import(os.path.join(
 		 question_library_path,question_path,'cqg_config.py'))
 		self.question_library_path = question_library_path
@@ -14,7 +13,6 @@ class caesar:
 		self.ciphertext = config.ciphertext
 		self.key = config.key
 		self.hotspots = config.hotspots
-		print "Finished Initing Caesar obj"
 	
 	def get_question_library_path(self):
 		return self.question_library_path
@@ -26,29 +24,33 @@ class caesar:
 		return style
 
 	def get_html(self, answer):
-		print "Starting to generate html"
-		html = "<div>"
-		html += "<p>" + self.question_text + "</p>"
+		print answer
+		print self.plaintext
+		print self.ciphertext
+		print self.hotspots
+		print self.key		
+		
+		html = "<div class=\"container\">"
+		html += "<p>Use a <b>caesar</b> cipher with key " + str(self.key)  + " to encrypt the plain text.</p>"
 		topArray = ["Plain text"]
 		bottomArray = ["Cipher text"]
 		
 		#Load the Plain text into a list
 		for char in self.plaintext:
-			topArray.append(char)
+			topArray.append(str(char))
 			
 		#Load the cipher text into the bottom array
 		for char in self.ciphertext:
-			bottomArray.append(char)
+			bottomArray.append(str(char))
 		
 		#Replace hotspot positions with text boxes
 		for pos in self.hotspots:
-			bottomArray[pos] = html_util.get_text()
+			bottomArray[pos+1] = html_util.get_text("text_box" + str(pos), '', 1)
 		
 		tableArray = [topArray, bottomArray]
 		
-		html += html_util.get_table(tableArray)
+		html += html_util.get_table(tableArray, "class=\"center_table\"")
 
-		print "Finished generating html"
 		return html + "</div>"
 
 	def get_input_element_ids(self):
@@ -65,16 +67,34 @@ class caesar:
 			return False
 
 style = '''
-	#question_cell div {
+	div.question_cell {
 		text-align:left;
 		width:75%;
 		margin:auto;
 	}
-	#question_cell table, #question_cell td {
+	table.question_cell, td.question_cell {
 		border:0px;
 	}
-	#question_cell {
+	table.center_table
+	{
+		margin-left:auto; 
+    	margin-right:auto;
+    	border-collapse: collapse;
+   		border-style: hidden;
+	}
+	td.question_cell {
 		border:1px solid black;
+	}
+	div.container {
+		text-align:center;
+	}
+	table td, table th {
+    	border: 1px solid black;
+	}
+	td {
+		padding-left:10px;
+		padding-right:10px;
+		text-align:center;
 	}
 	td.top {
 		vertical-align:top;

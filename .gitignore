@@ -18,3 +18,8 @@ question_library/
 
 # PDT-specific
 .buildpath
+
+httpserver.log
+httpserver.pid
+
+cqg/sessions/
