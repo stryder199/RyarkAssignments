@@ -4,6 +4,7 @@ import html_util
 
 class caesar:
 	def __init__(self,question_library_path,question_path):
+		print "Starting Initing Caesar obj"
 		config = file_util.dynamic_import(os.path.join(
 		 question_library_path,question_path,'cqg_config.py'))
 		self.question_library_path = question_library_path
@@ -13,6 +14,7 @@ class caesar:
 		self.ciphertext = config.ciphertext
 		self.key = config.key
 		self.hotspots = config.hotspots
+		print "Finished Initing Caesar obj"
 	
 	def get_question_library_path(self):
 		return self.question_library_path
@@ -24,6 +26,7 @@ class caesar:
 		return style
 
 	def get_html(self, answer):
+		print "Starting to generate html"
 		html = "<div>"
 		html += "<p>" + self.question_text + "</p>"
 		topArray = ["Plain text"]
@@ -45,6 +48,7 @@ class caesar:
 		
 		html += html_util.get_table(tableArray)
 
+		print "Finished generating html"
 		return html + "</div>"
 
 	def get_input_element_ids(self):

@@ -8,6 +8,8 @@ Thumbs.db
 .settings/
 .loadpath
 
+question_library/
+
 # Locally stored "Eclipse launch configurations"
 *.launch
 

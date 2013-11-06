@@ -125,6 +125,7 @@ for i in sorted(questions.keys()):
 
 	# get HTML and CSS representation from question object
 	question_html = question_obj.get_html(answer)
+	print question_html
 	if 'get_css' in dir(question_obj):
 		css = question_obj.get_css(answer)
 	else:
