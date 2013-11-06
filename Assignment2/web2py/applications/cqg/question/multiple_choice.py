@@ -52,6 +52,8 @@ class multiple_choice:
 		return ['answer']
 	
 	def check_answer(self,answer):
+		print "*******Checking answer!!********"
+		print answer
 		try:
 			if type(self.correct_answer) is list:
 				answer_list = [int(i) for i in answer['answer']] #DR1

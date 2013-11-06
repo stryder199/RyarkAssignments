@@ -24,8 +24,6 @@ condition_list = [
                   
     ['plaintext',
         "'plaintext' is a string comprised of chars in [A..Z]"],
-    ['ciphertext',
-        "'ciphertext' is a string comprised of chars in [A..Z]"],
     ['key',
         "'key' is an int < 26"],
     ['hotspots',
@@ -53,7 +51,7 @@ def verify_conditions(template, condition_list):
             prefix_list.append(group[0])
 
         for question in group[1:]:
-            if not (type(question) == list and len(question) == 4):
+            if not (type(question) == list and len(question) == 3):
                 return \
                  conditions_dictionary['question_format'] + \
                  '\n\tquestion: ' + str(question)
@@ -61,17 +59,13 @@ def verify_conditions(template, condition_list):
             if not (type(question[0]) == str and question[0].isalpha()):
                 return conditions_dictionary['plaintext']+\
                  '\n\tquestion: ' + str(question)
-                 
-            if not (type(question[1]) == str and question[1].isalpha()):
-                return conditions_dictionary['ciphertext']+\
-                 '\n\tquestion: ' + str(question)
 
-            if not (type(question[2]) == int and question[2] < 26 and question[2] >= 0):
+            if not (type(question[1]) == int and question[1] < 26 and question[1] >= 0):
                 return conditions_dictionary['key'] + \
                  '\n\tquestion: ' + str(question)
 
-            if type(question[3]) is list:
-                for index in question[3]:
+            if type(question[2]) is list:
+                for index in question[2]:
                     if index not in range(len(question[0])):
                         return conditions_dictionary['hotspots'] + '\n\tquestion: ' + str(question)
             else:

@@ -1,6 +1,7 @@
 import os
 import file_util
 import html_util
+import caesar_util
 
 class caesar:
 	def __init__(self,question_library_path,question_path):
@@ -10,8 +11,8 @@ class caesar:
 		self.question_path = question_path
 
 		self.plaintext = config.plaintext
-		self.ciphertext = config.ciphertext
 		self.key = config.key
+		self.ciphertext = caesar_util.caesar_encrypt(self.plaintext, self.key)
 		self.hotspots = config.hotspots
 	
 	def get_question_library_path(self):
@@ -45,7 +46,10 @@ class caesar:
 		
 		#Replace hotspot positions with text boxes
 		for pos in self.hotspots:
-			bottomArray[pos+1] = html_util.get_text("text_box" + str(pos), '', 1)
+			if answer['answer'] == None: #DR1
+				bottomArray[pos+1] = html_util.get_text('answer', '', 1) #DR2
+			else:
+				bottomArray[pos+1] = html_util.get_text('answer', answer['answer'][pos], 1) #DR3
 		
 		tableArray = [topArray, bottomArray]
 		
@@ -57,14 +61,18 @@ class caesar:
 		return ['answer']
 	
 	def check_answer(self,answer):
+		i = 0;
 		try:
-			if type(self.correct_answer) is list:
-				answer_list = [int(i) for i in answer['answer']] #DR1
-				return set(answer_list) == set(self.correct_answer)
-			else:
-				return int(answer['answer']) == self.correct_answer #DR2
+			for char in answer['answer']: #DR4
+				#if a spot is blank or
+				if not isinstance(char, str) and not isinstance(char, unicode) and not isinstance(char, basestring):
+					return False
+				if char == '' and char.lower() != self.ciphertext[self.hotspots[i]]: #DR5
+					return False
+				i = i + 1
 		except:
 			return False
+		return True
 
 style = '''
 	div.question_cell {

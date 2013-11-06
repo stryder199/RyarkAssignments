@@ -185,10 +185,8 @@ class quiz:
 
 		if contains_all:
 			for input_element_id in self.answer_list[q_num].keys():
-				self.answer_list[q_num][input_element_id] = \
-				 rv[input_element_id]
-			answer_correct = \
-			 question.check_answer(self.answer_list[q_num])
+				self.answer_list[q_num][input_element_id] = rv[input_element_id]
+			answer_correct = question.check_answer(self.answer_list[q_num])
 		else:
 			answer_correct = False
 

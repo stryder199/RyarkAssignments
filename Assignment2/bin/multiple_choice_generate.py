@@ -4,9 +4,7 @@ import sys
 import os
 import file_util
 
-template_string = 
-
-'''\
+template_string = '''\
 product_family = 'multiple_choice'
 question_type = 'multiple_choice'
 
@@ -14,8 +12,6 @@ question_text = $q
 answers = $a
 correct_answer = $c
 '''
-
-print "Starting mul choice gen"
 
 if len(sys.argv) != 3:
 	print 'Usage: multiple_choice_generate.py template question_directory'
@@ -46,5 +42,3 @@ for group in template.question_groups:
 		 os.path.join(path,'cqg_config.py'), config_string)
 
 		question_id += 1
-
-print "Finished mul choice gen"
