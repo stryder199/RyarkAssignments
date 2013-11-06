@@ -2,7 +2,7 @@ import os
 import file_util
 import html_util
 
-class ceasar:
+class caesar:
 	def __init__(self,question_library_path,question_path):
 		config = file_util.dynamic_import(os.path.join(
 		 question_library_path,question_path,'cqg_config.py'))
@@ -25,18 +25,16 @@ class ceasar:
 	def get_html(self, plain, answer):
 		html = "<div>"
 		html += "<p>" + self.question_text + "</p>"
-		textBoxs = []
 		topArray = ["Plain text"]
 		bottomArray = ["Cipher text"]
 		
-		for i in range(len(answers)):
-			textBoxs[i] = html_util.get_text()
-			
-		for in in range(len(plain)):
+		#Load the Plain text into a list
+		for i in range(len(plain)):
 			topArray.append(plain[i])
-			
-		for in in range(len(textBoxs)):
-			topArray.append(textBoxs[i])
+		
+		#Get text boxes for answers
+		for i in range(len(answer)):
+			bottomArray[i] = html_util.get_text()
 		
 		tableArray = [topArray, bottomArray]
 		
