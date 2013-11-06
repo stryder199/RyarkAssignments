@@ -1,43 +1,44 @@
-Multiple Choice Manual Test Plan
+Caesar Manual Test Plan
 
 Open URL
-	http://localhost:7777/cqg/quiz?spec=test_multiple_choice
+	http://localhost:7777/cqg/quiz?spec=test_caesar
 
-PF	a multiple choice question appears
+PF	a caesar cipher question appears
 
-PF	display table has 1 column
+PF	There are two rows, one with the plain text, one with cipher text
 
-PF	all cells have black border
 
 -----  question cell
 
-PF	Approximately 10% of the cell width separates "Question text" from
+PF	Approximately 25% of the cell width separates the question cell from
 	 the left black border
 
-PF	Below "Question text" are three radio buttons, labelled "incorrect",
-	 "correct", "incorrect"
+PF	There is a plain text row with letters in every column spelling out 'plaintexta'
 
-PF	The radio buttons are indented slightly relative to "Question text"
+PF	The first three cipher text cells in center_table have input textboxes
 
-PF	The radio buttons are all the same distance from the left black border
+PF	The remaining cipher text cells in center_table have the letters j, o, u, f, y, u, b
+
+PF	The rows in the center_table are all the same distance from the left black border
 
 ----- answer checking
 
-select the first "incorrect", then press Check answer
+Put any letter other than q in the first input textbox, under the 'p', then press Check answer
 
 PF	"Incorrect" displayed in red
 
-select "correct", then press Check answer
+PF	The box that says "1" will be highlighted in red.
 
-PF	"Correct" displayed in green
+Put a q in the first input textbox, then press Check answer
+
+PF	"Correct" displayed in green.
+
+PF	The box that says "1" will be highlighted in green.
 
 ----- layout edge cases
 
 press the "2" button
 
-PF	Long blocks of text wrap flush-left and have left and right margins
-	 approximately 10% of the cell width
+PF	A new question caesar cipher question appears with a key of 2 and the plain text 'plaintextb'
 
-PF	"Question text" displays as <tt>
-
-PF	There are checkboxes next to possible answers, instead of radio buttons
+PF	The filled in chars in the cipher text row are k, p, v, g, z, v, d
