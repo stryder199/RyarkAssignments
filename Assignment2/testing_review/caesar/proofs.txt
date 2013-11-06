@@ -1,0 +1,38 @@
+DR1
+Since answer is a dictionary, if we reference an element which doesn't exit it return "None".
+So it isn't possible to get a index out of bounds exception with a dictionary and even if we
+get a "None" value, thats what we are comparing against.
+
+DR2
+The length of bottomArray is governed by the initial element of "Cipher Text", plus the length
+of the cipher text since we loop through all the chars of cipher text and add them to bottomArray.
+Thus the length of bottomArray is len(ciphertext) + 1. Since by the preconditions in the
+template verifier, hotspots elements must be between 0...len(ciphertext)-1. Our reference can't
+be out of bounds since the +1 skips the first "Cipher Text" value and indexs 1...len(chipertext)
+are the same size as hotspots.
+
+DR3
+Same as DR2.
+
+DR4
+Since we know answer['answer'] must be defined or else we would have been stopped by the if
+statement. And since the number of hotspots dictates how many textboxs there will be, and the
+number of textboxs dictates how many answers there will be. len(hotspots) == len(answers) so
+the index at i will always be a valid call.
+
+DR5
+Same as DR1
+
+DR6
+Since the number of hotspots dictates how many textboxs there will be, and the
+number of textboxs dictates how many answers there will be. len(hotspots) == len(answers) so
+the index at i will always be a valid call.
+
+DR7
+Since the indexs stored in hotspots must be between 0...len(plaintext)-1 by the precondition in 
+template_verifier and len(plaintext) == len(ciphertext). The element in hotspot must be a
+valid position in ciphertext.
+
+DR8
+Since c_i is modded by 26 it must be a value from 0...25 and since valid calls of alpha are 
+from 0...25. The call must be valid.

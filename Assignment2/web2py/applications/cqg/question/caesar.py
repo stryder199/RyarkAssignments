@@ -45,11 +45,13 @@ class caesar:
 			bottomArray.append(str(char))
 		
 		#Replace hotspot positions with text boxes
+		i = 0
 		for pos in self.hotspots:
 			if answer['answer'] == None: #DR1
 				bottomArray[pos+1] = html_util.get_text('answer', '', 1) #DR2
 			else:
-				bottomArray[pos+1] = html_util.get_text('answer', answer['answer'][pos], 1) #DR3
+				bottomArray[pos+1] = html_util.get_text('answer', answer['answer'][i], 1) #DR3 #DR4
+				i=i+1
 		
 		tableArray = [topArray, bottomArray]
 		
@@ -63,11 +65,11 @@ class caesar:
 	def check_answer(self,answer):
 		i = 0;
 		try:
-			for char in answer['answer']: #DR4
-				#if a spot is blank or
+			for char in answer['answer']: #DR5
+				#If the char isn't a string or char
 				if not isinstance(char, str) and not isinstance(char, unicode) and not isinstance(char, basestring):
 					return False
-				if char == '' and char.lower() != self.ciphertext[self.hotspots[i]]: #DR5
+				if char == '' and char.lower() != self.ciphertext[self.hotspots[i]]: #DR6(inner) #DR7
 					return False
 				i = i + 1
 		except:

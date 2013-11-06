@@ -15,7 +15,7 @@ def caesar_encrypt(P,K):
     for p in P:
         index_c = alpha.index(p) + K
         index_c = index_c % 26
-        cipherString += alpha[index_c] #DR4
+        cipherString += alpha[index_c] #DR8
     cipherString = cipherString.lower()
             
     return cipherString
