@@ -7,7 +7,7 @@ preconditions
     P: string of A..Z
     K in 0..25
 '''
-def caeser_encrypt(P,K):
+def caesar_encrypt(P,K):
     alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     cipherString = ""
     
