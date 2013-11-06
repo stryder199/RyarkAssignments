@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://127.0.0.1:7777/cqg/quiz?spec=test_caesar" />
-<title>q1_incorrect</title>
+<link rel="selenium.base" href="http://127.0.0.1:8000/cqg/quiz?spec=test_caesar" />
+<title>q2_incorrect</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">q1_incorrect</td></tr>
+<tr><td rowspan="1" colspan="3">q2_incorrect</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -17,19 +17,24 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAndWait</td>
+	<td>xpath=//div[@id='question_chooser']//a[2]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>sendKeys</td>
 	<td>xpath=//table[@class='center_table']//tr[2]//td[2]/input</td>
-	<td>r</td>
+	<td>s</td>
 </tr>
 <tr>
 	<td>sendKeys</td>
 	<td>xpath=//table[@class='center_table']//tr[2]//td[3]/input</td>
-	<td>n</td>
+	<td>o</td>
 </tr>
 <tr>
 	<td>sendKeys</td>
 	<td>xpath=//table[@class='center_table']//tr[2]//td[4]/input</td>
-	<td>c</td>
+	<td>d</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
